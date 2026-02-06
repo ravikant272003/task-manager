@@ -28,8 +28,8 @@ Make sure you have the following installed:
 
 ### 2. Clone the Repository
 ```bash
-git clone <PASTE_YOUR_GITHUB_REPO_LINK_HERE>
-cd task-manager-assignment
+git clone https://github.com/ravikant272003/task-manager.git
+cd task-manager
 3. Install Dependencies
 Bash
 npm install
@@ -61,7 +61,7 @@ Once logged in, you can add, edit, delete, and filter your tasks.
   ├── /views          # Frontend Templates (EJS)
   ├── app.js          # Main Server File
   └── package.json    # Project Dependencies
-Developed by [Your Name]
+Developed by [Ravikant]
 
 
 ---
