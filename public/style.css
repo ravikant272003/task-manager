@@ -1,0 +1,215 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --primary: #bb86fc;
+    --primary-hover: #9965f4;
+    --danger: #cf6679;
+    --success: #03dac6;
+    --warning: #ffb74d;
+    --input-bg: #2d2d2d;
+    --border-radius: 12px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header Styling */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, #bb86fc, #03dac6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+.btn:active { transform: scale(0.95); }
+
+/* Add New Button */
+.btn-primary {
+    background: var(--primary);
+    color: #000;
+    display: block;
+    width: fit-content;
+    margin: 0 auto 30px;
+    box-shadow: 0 4px 15px rgba(187, 134, 252, 0.3);
+    padding: 12px 30px;
+    font-size: 1rem;
+}
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* Edit & Delete Buttons (Card Actions) */
+.btn-edit {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+.btn-edit:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+.btn-delete {
+    background: transparent;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    margin-left: 10px;
+}
+.btn-delete:hover {
+    background: var(--danger);
+    color: #000;
+}
+
+/* --- TASK LIST & CARDS --- */
+.task-list { list-style: none; padding: 0; }
+
+.task-card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border: 1px solid #333;
+}
+.task-card:hover { border-color: #555; }
+
+.task-info h3 { margin: 0 0 5px; font-size: 1.3rem; color: #fff; }
+.task-info p { margin: 0 0 15px; color: var(--text-muted); }
+
+/* Status Badges */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+.pending { background: rgba(255, 183, 77, 0.15); color: var(--warning); border: 1px solid rgba(255, 183, 77, 0.3); }
+.in-progress { background: rgba(187, 134, 252, 0.15); color: var(--primary); border: 1px solid rgba(187, 134, 252, 0.3); }
+.completed { background: rgba(3, 218, 198, 0.15); color: var(--success); border: 1px solid rgba(3, 218, 198, 0.3); }
+
+
+/* --- MAIN FORM STYLING (The Fix) --- */
+/* The symbol '>' ensures we ONLY style the main page forms, ignoring the delete button form */
+
+.container > form {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    border: 1px solid #333;
+}
+
+.container > form div { margin-bottom: 20px; }
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Inputs */
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--input-bg);
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(187, 134, 252, 0.2);
+}
+
+textarea { height: 120px; resize: vertical; }
+
+/* Submit Button for ADD/EDIT Pages only */
+.container > form button {
+    background: var(--primary);
+    color: black;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.container > form button:hover {
+    background: var(--primary-hover);
+}
+
+/* Cancel Link */
+a[href="/"] {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+a[href="/"]:hover { color: white; }
+
+/* Filter Section */
+.filter-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.filter-section select {
+    padding: 8px;
+    border-radius: 5px;
+    background: #2d2d2d;
+    color: white;
+    border: 1px solid #444;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* Mobile View */
+@media (max-width: 600px) {
+    .task-card { flex-direction: column; align-items: flex-start; }
+    .task-actions { width: 100%; margin-top: 15px; display: flex; gap: 10px; }
+    .btn-edit, .btn-delete { flex: 1; text-align: center; margin: 0;}
+}

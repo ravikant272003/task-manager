@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container">
+        <h1>My Tasks</h1>
+        <div style="text-align: right; margin-bottom: 20px;">
+            <% if(currentUser) { %>
+                <span style="color: #a0a0a0; margin-right: 10px;">Welcome, <%= currentUser.username %></span>
+                <a href="/logout" class="btn btn-delete">Logout</a>
+                <% } %>
+        </div>
+        <div class="filter-section">
+            <form action="/" method="GET">
+                <label for="status">Filter by Status:</label>
+                <select name="status" onchange="this.form.submit()">
+                    <option value="All" <%=currentFilter==='All' ? 'selected' : '' %>>All Tasks</option>
+                    <option value="Pending" <%=currentFilter==='Pending' ? 'selected' : '' %>>Pending</option>
+                    <option value="In Progress" <%=currentFilter==='In Progress' ? 'selected' : '' %>>In Progress
+                    </option>
+                    <option value="Completed" <%=currentFilter==='Completed' ? 'selected' : '' %>>Completed</option>
+                </select>
+            </form>
+        </div>
+        <a href="/tasks/new" class="btn btn-primary"> + Add New Task</a>
+
+        <ul class="task-list">
+            <% tasks.forEach(task=> { %>
+                <li class="task-card">
+                    <div class="task-info">
+                        <h3>
+                            <%= task.title %>
+                        </h3>
+                        <p>
+                            <%= task.description %>
+                        </p>
+
+                        <span class="status <%= task.status.toLowerCase().replace(' ', '-') %>">
+                            <%= task.status %>
+                        </span>
+                    </div>
+
+                    <div class="task-actions">
+                        <a href="/tasks/<%= task._id %>/edit" class="btn btn-edit">Edit</a>
+
+                        <form action="/tasks/<%= task._id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-delete">Delete</button>
+                        </form>
+                    </div>
+                </li>
+                <% }) %>
+        </ul>
+
+        <% if(tasks.length===0) { %>
+            <p>No tasks found. Create one to get started!</p>
+            <% } %>
+    </div>
+</body>
+
+</html>
